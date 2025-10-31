@@ -6,6 +6,9 @@ export function formatPrice(price: number): string {
   }).format(price);
 }
 
+// Alias for formatPrice
+export const formatCurrency = formatPrice;
+
 // Calculate discount percentage
 export function calculateDiscount(originalPrice: number, salePrice: number): number {
   if (originalPrice <= 0) return 0;

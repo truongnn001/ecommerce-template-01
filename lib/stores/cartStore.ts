@@ -18,6 +18,7 @@ interface CartStore {
   clearCart: () => void;
   getTotalItems: () => number;
   getSubtotal: () => number;
+  getTotalPrice: () => number; // Alias for getSubtotal
 }
 
 export const useCartStore = create<CartStore>()(
@@ -64,6 +65,10 @@ export const useCartStore = create<CartStore>()(
 
       getSubtotal: () => {
         return get().items.reduce((total, item) => total + item.price * item.quantity, 0);
+      },
+
+      getTotalPrice: () => {
+        return get().getSubtotal();
       },
     }),
     {
