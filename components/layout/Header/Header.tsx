@@ -62,7 +62,7 @@ export default function Header() {
             {navigation.map((item) => (
               <div
                 key={item.name}
-                className="relative"
+                className="group relative"
                 onMouseEnter={() => item.megaMenu && setActiveMegaMenu(item.name)}
                 onMouseLeave={() => setActiveMegaMenu(null)}
               >
@@ -80,10 +80,12 @@ export default function Header() {
                   )}
                 </Link>
                 {item.megaMenu && (
-                  <MegaMenu
-                    data={item.megaMenu}
-                    isOpen={activeMegaMenu === item.name}
-                  />
+                  <div className="absolute left-1/2 -translate-x-1/2 w-screen">
+                    <MegaMenu
+                      data={item.megaMenu}
+                      isOpen={activeMegaMenu === item.name}
+                    />
+                  </div>
                 )}
               </div>
             ))}

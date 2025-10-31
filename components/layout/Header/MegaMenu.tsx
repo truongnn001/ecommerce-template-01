@@ -12,13 +12,13 @@ export default function MegaMenu({ data, isOpen }: MegaMenuProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="absolute left-0 right-0 top-full z-50 bg-white shadow-2xl border-t border-gray-200">
-      <div className="container mx-auto max-w-7xl px-4 py-8">
-        <div className={`grid gap-8 ${
-          data.columns.length === 6 ? 'grid-cols-6' :
-          data.columns.length === 4 ? 'grid-cols-4' :
-          data.columns.length === 3 ? 'grid-cols-3' :
-          'grid-cols-2'
+    <div className="absolute left-0 right-0 top-full z-50 bg-white shadow-2xl border-t border-gray-200 pt-8">
+      <div className="container mx-auto max-w-7xl px-4 pb-8">
+        <div className={`grid ${
+          data.columns.length === 6 ? 'grid-cols-6 gap-4' :
+          data.columns.length === 4 ? 'grid-cols-4 gap-6' :
+          data.columns.length === 3 ? 'grid-cols-3 gap-8' :
+          'grid-cols-2 gap-8'
         }`}>
           {data.columns.map((column) => (
             <div key={column.id} className="space-y-3">
