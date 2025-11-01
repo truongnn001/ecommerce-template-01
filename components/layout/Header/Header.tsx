@@ -60,12 +60,8 @@ export default function Header() {
           : 'bg-white shadow-sm'
       }`}
     >
-      {/* Top Banner */}
-      <div 
-        className={`bg-brand-purple-600 py-2 text-center text-sm text-white transition-all duration-300 ${
-          isScrolled ? 'h-0 overflow-hidden py-0' : 'h-auto'
-        }`}
-      >
+      {/* Top Banner - Always visible */}
+      <div className="bg-brand-purple-600 py-2 text-center text-sm text-white">
         Free shipping on $749+ | $4.99 shipping on $199+
       </div>
 

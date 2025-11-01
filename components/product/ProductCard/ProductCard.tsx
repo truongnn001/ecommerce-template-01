@@ -25,7 +25,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     : 0;
 
   return (
-    <div className="card card-hover group relative overflow-hidden p-0">
+    <div className="card card-hover group relative flex h-full flex-col overflow-hidden p-0">
       {/* Badge */}
       {product.badge && (
         <div className="absolute left-2 top-2 z-10">
@@ -54,9 +54,9 @@ export default function ProductCard({ product }: ProductCardProps) {
       </Link>
 
       {/* Product Info */}
-      <div className="p-4">
+      <div className="flex flex-1 flex-col p-4">
         <Link href={`/products/${product.slug}`}>
-          <h3 className="mb-2 line-clamp-2 text-sm font-medium text-gray-900 hover:text-brand-purple-600">
+          <h3 className="mb-2 line-clamp-2 min-h-[2.5rem] text-sm font-medium text-gray-900 hover:text-brand-purple-600">
             {product.name}
           </h3>
         </Link>
@@ -68,6 +68,9 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.reviewCount && <span>({product.reviewCount})</span>}
           </div>
         )}
+
+        {/* Spacer to push content to bottom */}
+        <div className="flex-1"></div>
 
         {/* Price */}
         <div className="mb-3 flex items-center space-x-2">
