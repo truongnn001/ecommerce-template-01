@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen -mt-[120px]">
       {/* Hero Slider */}
       <HeroSlider />
 

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FiSearch, FiShoppingCart, FiUser, FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 import { useCartStore } from '@/lib/stores/cartStore';
 import MegaMenu from './MegaMenu';
@@ -15,7 +15,17 @@ import {
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const totalItems = useCartStore((state) => state.getTotalItems());
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navigation = [
     {
@@ -43,9 +53,19 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/95 backdrop-blur-sm shadow-lg' 
+          : 'bg-white shadow-sm'
+      }`}
+    >
       {/* Top Banner */}
-      <div className="bg-brand-purple-600 py-2 text-center text-sm text-white">
+      <div 
+        className={`bg-brand-purple-600 py-2 text-center text-sm text-white transition-all duration-300 ${
+          isScrolled ? 'h-0 overflow-hidden py-0' : 'h-auto'
+        }`}
+      >
         Free shipping on $749+ | $4.99 shipping on $199+
       </div>
 
